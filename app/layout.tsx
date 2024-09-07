@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { Card } from "@/components/ui/card";
+import { NavigationLinks } from "@/components/Navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,8 +17,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className="dark">
+      <body className="w-screen h-screen bg-slate-950">
+        <div className="overflow-hidden rounded-[0.5rem] border bg-background shadow">
+          <Card className="flex-col md:flex bg-slate-950">
+            <div className="border-b">
+              <div className="flex h-16 items-center px-4">
+                <NavigationLinks />
+              </div>
+            </div>
+            <div className="flex-1 p-8 pt-6">{children}</div>
+          </Card>
+        </div>
+      </body>
     </html>
   );
 }
